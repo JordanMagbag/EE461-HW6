@@ -21,7 +21,7 @@ class App extends React.Component{
     const data = {firstName: this.state.firstName};
     event.preventDefault();
     this.setState({showName : true})
-    fetch("http://127.0.0.1:5000/result", {
+    fetch("/result", {
       method:"POST",
       cache: "no-cache",
       headers:{

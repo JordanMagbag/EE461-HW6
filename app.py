@@ -13,7 +13,7 @@ app = Flask(__name__, static_folder="frontend/build", static_url_path="")
 @app.route("/result", methods=["POST", "GET"])
 def result():
     if request.method == "POST":
-        firstName = request.json
+        firstName = request.get_json(force=True)
         first = firstName["firstName"]
         if first == 'Jordan':
             lastName = "Magbag"
