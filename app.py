@@ -2,13 +2,13 @@ from flask import Flask, jsonify, request
 from flask.helpers import send_from_directory
 import os
 # comment out on deployment
-from flask_cors import CORS
+#from flask_cors import CORS
 
 # uses 'frontend' because that is where our react app is stored
 app = Flask(__name__, static_folder="frontend/build", static_url_path="")
 
 # comment out on deployment
-CORS(app)
+#CORS(app)
 
 @app.route("/result", methods=["POST", "GET"])
 def result():
@@ -28,5 +28,5 @@ def result():
 def index():
     return send_from_directory(app.static_folder, "index.html")
 
-if __name__ == 'main':
-    app.run(host='0.0.0.0')
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', debug=False, port=os.environ.get('PORT', 80))
